@@ -16,6 +16,7 @@
     display: inline-block;
     width: 30px;
     height: 19px;
+    padding-left: 5px;
   }
   
   /*ハンバーガーアイコンをCSSだけで表現*/
