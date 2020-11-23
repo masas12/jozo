@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    
+    <!-- ファビコン -->
+    <link rel="icon" href="../icon/icon_512×512.ico">        
+    <!-- アイコン -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../icon/icon_192×192.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/default.css">
+    <link rel="stylesheet" href="../css/root.css">
+    <link rel="stylesheet" href="../css/side_menu.css">
+    <link rel="stylesheet" href="../css/data_search.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    
+    <!-- 日本語の言語ファイル -->
+    <script src="https://unpkg.com/flatpickr/dist/l10n/ja.js"></script>
+
+    <script src="../js/ajax.js"></script>
+
+    <title>IQDB-品質データ閲覧</title>
+</head>
+<body>
+    <header>
+        <div class="dummy"></div>
+        <div class="title">分析データ検索</div> 
+        <div id="nav-drawer">
+            <input id="nav-input" type="checkbox" class="nav-unshown">
+            <label id="nav-open" for="nav-input"><span></span></label>
+            <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+            <div id="nav-content">
+                <div class="menu"><p>Menu</p>
+                    <ul>
+                        <li>
+                            <a class="menu-button menu-quality" href="../quality/data_search.html">分析データ</a>
+                        </li>
+                        <li>
+                            <a class="menu-button menu-temperature" href="../temperature/temp_search.html">品温データ</a>
+                        </li>
+                        <li>
+                            <a class="menu-button menu-tasting" href="../tasting/login.html">官能検査</a>
+                        </li>
+                        <!-- <li>
+                            <a class="menu-button" href="qr_reader/qr_reader.html">QRコードリーダー</a>
+                        </li> -->
+                        <li>
+                            <a class="menu-button menu-home" href="../index.html">HOME</a>
+                        </li>
+                    </ul>
+            </div>
+            </div>
+        </div>
+        
+    </header>
+    <main>
+        <div class="main-content">
+            <label for="conditions" class="condition-title">
+                <div class="search"></div>
+                <span>検索条件</span>
+                <img class="search" src="../icon/search.png" alt="×" height="25" width="25">
+            </label>
+            <input type="checkbox" id="conditions" class="show-check"/>
+            <div class="show-content">
+                <form name="conditions">    
+                    <div class="container" name="license">
+                        <label for="license">免許地</label>
+                        <br>
+                        <div class="license-group">
+                            <div>
+                                <input type="checkbox" id="license1" value="01" name="license">
+                                <label >内蔵</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="license2" value="05" name="license">
+                                <label >昭和蔵</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="license3" value="07" name="license">
+                                <label >大手蔵</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="license4" value="08" name="license">
+                                <label >研究所</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container" name="date">
+                        <label for="sample_date">検索日</label>
+                        <br>
+                        <input class="sample-date input-box" id="sample-date" type="text" placeholder="日付範囲（1日の場合は2回選択）" name="sample_date">
+                        <script>
+                            const config = {
+                                disableMobile: "true",
+                                dateFormat: "Y-m-d",
+                                defaulDate: "today",
+                                mode: "range",
+                                maxDate: "today"
+                                }
+                                flatpickr('#sample-date', config);
+                        </script>
+                        <br>
+                    </div>
+                    <div class="container" name="lot">
+                        <label for="lot_number">ロット</label>
+                        <br>
+                        <input class="lot-number input-box" id="lot-number" type="text" name="lot_number" placeholder="部分入力可(タンクNoなど)">
+                        <br>
+                    </div>
+                    <div class="container" name="material">
+                        <label for="material_code">品目</label>
+                        <br>
+                        <input class="material-code input-box" id="material-code" type="text" name="material_code" placeholder="部分入力可">
+                        <br>
+                    </div>
+                    <div class="container" name="process">
+                        <label for="process_code">工程</label>
+                        <br>
+                        <select class="process" id="process-code" name="process_code" size="1">
+                            <option value="">すべて</option>
+                            <option value="001">検定（上槽）</option>
+                            <option value="002">検定（蒸留）</option>
+                            <option value="003">検定（分離）</option>
+                            <option value="004">検定（調合）</option>
+                            <option value="005">検定A</option>
+                            <option value="006">検定B</option>
+                            <option value="007">検定C</option>
+                            <option value="008">検定D</option>
+                            <option value="009">検定E</option>
+                            <option value="011">濾過</option>
+                            <option value="012">限外濾過</option>
+                            <option value="013">ベロー濾過</option>
+                            <option value="014">仕上濾過</option>
+                            <option value="021">滓揚</option>
+                            <option value="031">火入</option>
+                            <option value="032">火入Ｂ</option>
+                            <option value="033">瞬殺</option>
+                            <option value="041">移動</option>
+                            <option value="051">貯蔵欠減</option>
+                            <option value="061">混和</option>
+                            <option value="062">タケメイト混和</option>
+                            <option value="063">活性炭混和</option>
+                            <option value="071">詰口</option>
+                            <option value="072">詰口残酒</option>
+                            <option value="081">酒開け</option>
+                            <option value="091">ドレン添加</option>
+                            <option value="101">ドレン混和</option>
+                            <option value="111">割水</option>
+                            <option value="112">原酒加水</option>
+                            <option value="113">一次加水</option>
+                            <option value="121">採取</option>
+                            <option value="122">呑み切り</option>
+                            <option value="131">タンク戻し</option>
+                            <option value="141">課税</option>
+                            <option value="151">原料用アルコール添加</option>
+                            <option value="161">原料用アルコール加水</option>
+                            <option value="171">分析払</option>
+                            <option value="172">官能検査払</option>
+                            <option value="181">用途変更</option>
+                            <option value="191">原料用アルコール移入</option>
+                            <option value="201">未納税移入（注文生産酒）</option>
+                            <option value="211">未納税移出（蔵内）</option>
+                            <option value="212">未納税移入</option>
+                            <option value="221">未納税移出（蔵外）</option>
+                            <option value="901">受入</option>
+                            <option value="911">原水採取</option>
+                            <option value="912">処理水採取</option>
+                            <option value="913">仕込水採取</option>
+                            <option value="921">精米</option>
+                            <option value="931">浸漬</option>
+                            <option value="932">蒸きょう</option>
+                            <option value="933">放冷</option>
+                            <option value="941">引き込み</option>
+                            <option value="942">切り返し</option>
+                            <option value="943">盛り</option>
+                            <option value="944">出麹</option>
+                            <option value="945">乾燥</option>
+                            <option value="951">前培養</option>
+                            <option value="952">培養</option>
+                            <option value="953">分離</option>
+                            <option value="961">仕込み</option>
+                            <option value="971">粕はがし</option>
+                            <option value="999">依頼分析</option>
+                        </select>
+                        <br>
+                    </div>
+                    <div class="container" name="count">
+                        <label for="record_count">表示件数</label>
+                        <br>
+                        <input class="record-count input-box" id="record-count" type="number" name="record_count" value="10" min="1" max="100">
+                        <br>
+                    </div>
+                    <div class="container" name="submit">
+                        <button class="submit" type="button" onclick="getData()">表示する</button>
+                    </div>
+                </form> 
+            </div>
+        </div>
+        <div class="main-content results" id="results">
+        </div>
+    </main>
+    <footer>
+        <div class="footer-message">
+            歩きスマホは絶対にやめましょう。
+        </div>
+    </footer>
+</body>
+</html>
