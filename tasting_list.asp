@@ -4,12 +4,12 @@
     <meta charset="SHIFT-JIF">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>IDŽw’è</title>
+    <title>IDï¿½wï¿½ï¿½</title>
 </head>
 <body>
     <% 
     Set FSO = Server.CreateObject("Scripting.FileSystemObject")
-    Set Obj = FSO.OpenTextFile("\\srv-160\wwwroot\gekkeikan\Jozo\iqdb\db\db_info.txt", 1)
+    Set Obj = FSO.OpenTextFile("\\srv-160\wwwroot\gekkeikan\Jozo\iqdb\db\db_config.txt", 1)
     i = 1
     Do until Obj.AtEndOfStream = True
         Select Case i
@@ -69,6 +69,6 @@
     </table>
     <br>
     <br>
-    <a href="insert.asp">V‹K“o˜^</a>
+    <a href="insert.asp">ï¿½Vï¿½Kï¿½oï¿½^</a>
 </body>
 </html>

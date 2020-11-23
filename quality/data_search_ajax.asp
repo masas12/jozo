@@ -5,7 +5,7 @@
     On Error Resume Next
     'DB接続文字列取得
     Set FSO = Server.CreateObject("Scripting.FileSystemObject")
-    Set Obj = FSO.OpenTextFile("\\srv-160\wwwroot\gekkeikan\Jozo\iqdb\db\db_info.txt", 1)
+    Set Obj = FSO.OpenTextFile("\\srv-160\wwwroot\gekkeikan\Jozo\iqdb\db\db_config.txt", 1)
     i = 1
     Do until Obj.AtEndOfStream = True
         Select Case i
