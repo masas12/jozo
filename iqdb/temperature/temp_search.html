@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+    
+    <!-- ファビコン -->
+    <link rel="icon" href="../icon/icon_512×512.ico">        
+    <!-- アイコン -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../icon/icon_192×192.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/default.css">
+    <link rel="stylesheet" href="../css/root.css">
+    <link rel="stylesheet" href="../css/side_menu.css">
+    <link rel="stylesheet" href="../css/temp_search.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/chartjs-plugin-colorschemes"></script>
+    <script src="../js/myChart.js"></script>
+    <title>品温データ検索</title>
+</head>
+<body>
+    <header>
+        <div class="dummy"></div>
+        <div class="title">品温データ検索</div> 
+        <div id="nav-drawer">
+            <input id="nav-input" type="checkbox" class="nav-unshown">
+            <label id="nav-open" for="nav-input"><span></span></label>
+            <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+            <div id="nav-content">
+                <div class="menu"><p>Menu</p>
+                    <ul>
+                        <li>
+                            <a class="menu-button menu-quality" href="../quality/data_search.html">分析データ</a>
+                        </li>
+                        <li>
+                            <a class="menu-button menu-temperature" href="../temperature/temp_search.html">品温データ</a>
+                        </li>
+                        <li>
+                            <a class="menu-button menu-tasting" href="../tasting/login.html">官能検査</a>
+                        </li>
+                        <!-- <li>
+                            <a class="menu-button" href="qr_reader/qr_reader.html">QRコードリーダー</a>
+                        </li> -->
+                        <li>
+                            <a class="menu-button menu-home" href="../index.html">HOME</a>
+                        </li>
+                    </ul>
+            </div>
+            </div>
+        </div>
+        
+    </header>
+
+    <main>
+        <label for="conditions" class="condition-title">
+            <div class="search"></div>
+            <span>検索条件</span>
+            <img class="search" src="../icon/search.png" alt="×" height="25" width="25">
+        </label>
+        <input type="checkbox" id="conditions" class="show-check"/>
+        <div class="show-content">
+            <form name="conditions">    
+                <div class="container" name="brewery">
+                    <label for="brewery">蔵</label>
+                    <br>
+                    <div class="license-group">
+                        <div>
+                            <input type="radio" id="license1" value="ginjo" name="brewery">
+                            <label >吟醸ライン</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="license2" value="yumai" name="brewery">
+                            <label >融米ライン</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="license3" value="2gou" name="brewery">
+                            <label >２号蔵</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="container" name="type">
+                    <label for="type">種類</label>
+                    <br>
+                    <div class="license-group">
+                        <div>
+                            <input type="radio" id="type1" value="koji" name="type" required="required">
+                            <label >製麹</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="type2" value="moromi" name="type" required="required">
+                            <label >もろみ</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="container" name="by"">
+                    <label for="by">BY</label>
+                    <br>
+                    <input class="by input-box" id="by" type="number" name="by" placeholder="西暦で入力">
+                    <br>
+                </div>
+                <div class="container" name="lot-number">
+                    <label for="lot-number">番号</label>
+                    <br>
+                    <input class="lot-number input-box" id="lot-number" type="number">
+                    <br>
+                </div>
+                <div class="container" name="submit">
+                    <button class="submit" type="button" onclick="main('http://srv-160/Gekkeikan/Jozo/iqdb/temperature/' + 
+                    document.conditions.type.value + '/' + 
+                    document.conditions.brewery.value + '/' + 
+                    document.getElementById('by').value + '/' + 
+                    document.getElementById('lot-number').value + '.csv')">表示する</button>
+                </div>
+            </form> 
+        </div>
+        <div class="image-frame">
+            <div>
+                <canvas id="myChart" width="100%" height="400"></canvas>
+            </div>
+        </div>
+    </main> 
+
+</body>
+</html>

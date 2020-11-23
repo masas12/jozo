@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ファビコン-->
+    <link rel="icon" href="../icon/icon_512×512.ico">        
+    <!-- アイコン -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../icon/icon_192×192.png">
+
+    <link rel="stylesheet" href="../css/default.css">
+    <link rel="stylesheet" href="../css/side_menu.css">
+    <link rel="stylesheet" href="../css/login.css">
+
+    <link rel="stylesheet" href="../css/root.css">
+    <title>IQDB-官能検査ログイン</title>
+    
+</head>
+<body>
+    <header>
+        <div class="dummy"></div>
+        <div class="title">官能検査</div> 
+        <div id="nav-drawer">
+            <input id="nav-input" type="checkbox" class="nav-unshown">
+            <label id="nav-open" for="nav-input"><span></span></label>
+            <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+            <div id="nav-content">
+                <div class="menu"><p>Menu</p>
+                    <ul>
+                        <li>
+                            <a class="menu-button menu-quality" href="../quality/data_search.html">分析データ</a>
+                        </li>
+                        <li>
+                            <a class="menu-button menu-temperature" href="../temperature/temp_search.html">品温データ</a>
+                        </li>
+                        <li>
+                            <a class="menu-button menu-tasting" href="../tasting/login.html">官能検査</a>
+                        </li>
+                        <!-- <li>
+                            <a class="menu-button" href="qr_reader/qr_reader.html">QRコードリーダー</a>
+                        </li> -->
+                        <li>
+                            <a class="menu-button menu-home" href="../index.html">HOME</a>
+                        </li>
+                    </ul>
+            </div>
+            </div>
+        </div>
+        
+    </header>
+    <main>
+    <form action="tasting.asp" method="post" name="my-form">        
+        <div class="title">ログイン情報</div>
+        <div class="container">
+            <label for="license">免許地</label>
+            <br>
+            <div class="license-group">
+                <div>
+                    <input type="radio" value="01" name="license" required="required">
+                    <label >内蔵</label>
+                </div>
+                <div>
+                    <input type="radio" value="05" name="license" required="required">
+                    <label >昭和蔵</label>
+                </div>
+                <div>
+                    <input type="radio" value="07" name="license" required="required">
+                    <label >大手蔵</label>
+                </div>
+                <div>
+                    <input type="radio" value="08" name="license" required="required">
+                    <label >研究所</label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <label for="employee">社員コード</label>
+            <br>
+            <input class="employee" type="number" placeholder="#####" name="employee" min="1" max="99999" required="required">
+            <br>
+        </div>
+        <div class="container">
+            <input class="submit" type="submit" value="START">
+        </div>
+        </p>
+    </form>
+    </main> 
+    <footer>
+        <div class="footer-message">
+            歩きスマホは絶対にやめましょう。
+        </div>
+    </footer>
+</body>
+</html>
