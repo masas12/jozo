@@ -1,0 +1,23 @@
+@charset = 'utf-8';
+
+:root {
+    --font-dark-color: #211f30;
+    --font-light-color: #ffffff;
+    --font-sub-color: #c3c7d6;
+    
+    --main-color: var(--font-dark-color);
+    --main-back-color: #ffffff;
+    --header-color: var(--font-light-color);
+    --header-back-color: #0e5b8f;
+    --footer-color: var(--font-light-color);
+    --footer-back-color: #211f30;
+    --button-color: var(--font-dark-color);
+    --button-back-color: #e29930;
+    --button-border-color: #b46a02;
+    --menu-color: var(--font-light-color);
+    --menu-back-color: #0e5b8f;
+    --menu-border-color: #211f30;
+    --submenu-color: #211f30;
+    --submenu-back-color: #e7f3fc;
+    --submenu-border-color: #211f30;
+}

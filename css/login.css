@@ -1,0 +1,127 @@
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main {
+    height: auto;
+    width: 80%;
+    margin: auto 0;
+    border-radius: 5px;
+}
+
+form {
+    background-color: var(--font-light-color);
+    border: var(--header-back-color) solid 1px;
+    border-radius: 5px;
+}
+
+.title {
+    background-color: var(--header-back-color);
+    color: var(--header-color);
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.title span {
+    line-height: 40px;
+}
+
+.container {
+    font-size: 20px;
+    text-align: left;
+    margin: 20px 10% 0px 10%;
+    background-color: var(--font-light-color);
+}
+
+
+.license-group {
+    height: 40px;
+    display: flex;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 10px auto 0 auto;
+    border : var(--footer-back-color) solid 1px;
+}
+
+.license-group div {
+    position: relative;
+    flex: 1;
+    margin: 1px;
+}
+
+.license-group input {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+}
+
+.license-group  label {
+    font-size: 16px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--font-sub-color);
+    border-right: 1px solid var(--footer-back-color);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: Center;
+    pointer-events: none;
+}
+
+.license-group div:last-child label {
+    border-right: 0;
+}
+
+.license-group  input:checked + label {
+    color: var(--menu-color);
+    background-color: var(--menu-back-color);
+    font-weight: 500;
+}
+
+.employee {
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    padding: 1px 10px;
+    box-sizing: border-box;
+    background-color: var(--footer-color);
+    border : var(--footer-back-color) solid 1px;
+    border-radius: 2px;
+    margin: 10px auto 50px auto;
+}
+
+.submit {
+    width: 100%;
+    font-size: 20px;
+    height: 50px;
+    margin: 0 0 10px 0;
+    border: none;
+    outline: none;
+    color: var(--button-color);
+    background-color: var(--button-back-color);
+    border-bottom: solid 4px var(--button-border-color);
+    border-radius: 3px;
+}
+.submit:active {
+    margin-top: 4px;
+    margin-bottom: 6px;
+    border-bottom: none;
+}
