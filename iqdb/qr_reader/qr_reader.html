@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ファビコン -->
+    <link rel="icon" href="../icon/icon_512×512.ico">        
+    <!-- アイコン -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../icon/icon_192×192.png">
+
+    <link rel="stylesheet" href="../css/default.css">
+    <link rel="stylesheet" href="../css/root.css">
+    <link rel="stylesheet" href="../css/qr_reader.css">
+
+    <title>IQDB-QRcode-Reader</title>
+    
+</head>
+<body>
+    <header>
+        <div class="title">QRcode-Reader</div>
+    </header>
+    <div class="top-wrapper">
+      細かいQRコードは読み取れない場合があります。
+    </div>
+    <main>
+        <div class="reader">
+          <video id="js-video" class="reader-video" autoplay playsinline></video>
+        </div>
+
+        <div style="display:none">
+          <canvas id="js-canvas"></canvas>
+        </div>
+
+        <div id="js-modal" class="modal-overlay">
+          <div class="modal">
+            <div class="modal-cnt">
+              <span class="modal-title">読み取り結果</span>
+              <span id="js-result" class="modal-result"></span>
+            </div>
+            <a href="" id="js-link" class="modal-btn" target="_blank">開く</a>
+            <button type="button" id="js-modal-close" class="modal-btn">閉じる</button>
+          </div>
+        </div>
+
+<div id="js-unsupported" class="unsupported">
+  <p class="unsupported-title">Sorry!</p>
+  <p>Unsupported browser</p>
+</div>
+
+<script src="../js/jsQR.js"></script>
+<script src="../js/qr_reader.js"></script>
+    </main>
+    <footer>
+        <div class="footer-message">
+            歩きスマホは絶対にやめましょう。
+        </div>
+    </footer>
+</body>
+</html>
