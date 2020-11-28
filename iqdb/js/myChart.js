@@ -10,7 +10,7 @@ function csv2Array(str) {
   return csvData;
 }
 
-function drawChartKoji(data) {
+function drawChartKoji(data, no) {
   // 3)chart.jsのdataset用の配列を用意
   var tmpLabels = [], tmpData1 = [], tmpData2 = [], tmpData3 = [],
       tmpData4 = [], tmpData5 = [], tmpData6 = [], tmpData7 = [],
@@ -35,7 +35,7 @@ function drawChartKoji(data) {
   };
 
   // 4)chart.jsで描画
-  var ctx = document.getElementById("myChart").getContext("2d");
+  var ctx = document.getElementById("myChart-" + no).getContext("2d");
   ctx.canvas.height = 300;
   var myChart = new Chart(ctx, {
     type: 'bar',
@@ -114,7 +114,7 @@ function drawChartKoji(data) {
     });
   }
 
-function drawChartMoromi(data) {
+function drawChartMoromi(data, no) {
   // 3)chart.jsのdataset用の配列を用意
   var tmpLabels = [], tmpData1 = [], tmpData2 = [], tmpData3 = [];
   for (var row in data) {
@@ -125,7 +125,7 @@ function drawChartMoromi(data) {
   };
 
   // 4)chart.jsで描画
-  var ctx = document.getElementById("myChart").getContext("2d");
+  var ctx = document.getElementById("myChart-" + no).getContext("2d");
   ctx.canvas.height = 300;
   var myChart = new Chart(ctx, {
     type: 'line',
@@ -203,7 +203,7 @@ function drawChartMoromi(data) {
   });
 }
 
-function main(path) {
+function exeChart(path, no) {
   // 1) ajaxでCSVファイルをロード
   var req = new XMLHttpRequest();
   var filePath = path;
@@ -215,15 +215,15 @@ function main(path) {
 
     // 3) chart.jsデータ準備、4) chart.js描画の呼び出し
     if(filePath.indexOf( 'koji' ) !== -1) {
-      drawChartKoji(data);
+      drawChartKoji(data, no);
     }else if(filePath.indexOf( 'moromi' ) !== -1) {
-      drawChartMoromi(data);
+      drawChartMoromi(data, no);
     }
 
     try {      
       if(this.status != 200) {
         alert('該当のデータがありません。');  
-        main('http://srv-160/Gekkeikan/Jozo/data/moromi/ginjo/dummy.csv') ; 
+        exeChart('http://srv-160/Gekkeikan/Jozo/data/moromi/ginjo/dummy.csv') ; 
       }
     } catch (e) {
       alert(e.message);

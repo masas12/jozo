@@ -45,3 +45,9 @@ function getDataCallBack(){
         }
     }
 }
+
+function getTemperatureData(){
+    alert('作成中')
+
+    
+}

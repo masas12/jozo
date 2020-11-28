@@ -17,6 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/chartjs-plugin-colorschemes"></script>
     <script src="../js/myChart.js"></script>
+    <script src="../js/ajax.js"></script>
     <title>品温データ</title>
 </head>
 <body>
@@ -93,21 +94,42 @@
                     </div>
                 </div>
                 <div class="container" name="submit">
-                    <button class="submit" type="button" onclick="main('./' + 
+                    <button class="submit" type="button" onclick="exeChart('./' + 
                     document.conditions.type.value + '/' + 
-                    document.conditions.brewery.value + '/3009' + '.csv')">表示する</button>
+                    document.conditions.brewery.value + '/3009' + '.csv' ,1)">表示する</button>
+                </div>
+                <div class="container" name="submit">
+                    <button class="submit" type="button" onclick="getTemperatureData()">表示する</button>
                 </div>
             </form> 
         </div>
         <div class="main-content">
             <div class=" data-frame">
                 <div class="data-label">
-                    <div>TNo.8218</div>
-                    <div>3009号</div>
-                    <div>24日目</div>
-                    <div>大吟醸0-50</div>
+                    <div>3009号  24日目</div>
+                    <div>タンクNo:8218</div>
                 </div>
-                <canvas id="myChart"></canvas>
+                <div class="data-chart">
+                    <canvas class="chart" id="myChart-1"></canvas>
+                </div>
+            </div>
+            <div class=" data-frame">
+                <div class="data-label">
+                    <div>3010号  24日目</div>
+                    <div>タンクNo:8218</div>
+                </div>
+                <div class="data-chart">
+                    <canvas class="chart" id="myChart"></canvas>
+                </div>
+            </div>
+            <div class=" data-frame">
+                <div class="data-label">
+                    <div>3011号  24日目</div>
+                    <div>タンクNo:8218</div>
+                </div>
+                <div class="data-chart">
+                    <canvas class="chart" id="myChart"></canvas>
+                </div>
             </div>
         </div>
     </main> 

@@ -18,11 +18,6 @@ main {
     margin: 40px 0;
 }
 
-.main-content {
-    margin: 2px 0;
-    padding: 0;
-}
-
 form {  
     background-color: var(--font-light-color);
     /* border: var(--header-back-color) solid 1px; */
@@ -211,23 +206,39 @@ table .quality{
     opacity: 1;
 }
 
+
+.main-content {
+    padding: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .data-frame {
-    background-color: var(--font-sub-color);
     display: flex;
     flex-direction: column;
     font-size: 16px;
+    margin: 5px 0;
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgb(211,211,211);
 }
 
 .data-label {
+    background-color: var(--font-sub-color);
     display: flex;
     align-items: center;
+    box-sizing: border-box;
     justify-content: space-around;
 }
 
-.data-frame canvas {
-    border: 1px solid rgb(211, 211, 211);
-    background-color: var(--menu-color);
+.chart {
+    display: inline-block;
     box-sizing: border-box;
+    width: 100%;
+    height: 0;
 }
 
 .footer-message {
