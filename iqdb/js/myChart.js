@@ -36,7 +36,7 @@ function drawChartKoji(data) {
 
   // 4)chart.jsで描画
   var ctx = document.getElementById("myChart").getContext("2d");
-  ctx.canvas.height = 200;
+  ctx.canvas.height = 300;
   var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -126,7 +126,7 @@ function drawChartMoromi(data) {
 
   // 4)chart.jsで描画
   var ctx = document.getElementById("myChart").getContext("2d");
-  ctx.canvas.height = 200;
+  ctx.canvas.height = 300;
   var myChart = new Chart(ctx, {
     type: 'line',
     data: {
