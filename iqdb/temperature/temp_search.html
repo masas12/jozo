@@ -17,7 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/chartjs-plugin-colorschemes"></script>
     <script src="../js/myChart.js"></script>
-    <title>品温データ検索</title>
+    <title>品温データ</title>
 </head>
 <body>
     <header>
@@ -47,7 +47,7 @@
             </div>
             </div>
         </div>
-        <div class="title">品温データ検索</div> 
+        <div class="title">品温データ</div> 
         <div class="dummy"></div>
     </header>
 
@@ -92,30 +92,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="container" name="by">
-                    <label for="by">BY</label>
-                    <br>
-                    <input class="by input-box" id="by" type="number" name="by" placeholder="西暦で入力">
-                    <br>
-                </div>
-                <div class="container" name="lot-number">
-                    <label for="lot-number">番号</label>
-                    <br>
-                    <input class="lot-number input-box" id="lot-number" type="number">
-                    <br>
-                </div>
                 <div class="container" name="submit">
                     <button class="submit" type="button" onclick="main('./' + 
                     document.conditions.type.value + '/' + 
-                    document.conditions.brewery.value + '/' + 
-                    document.getElementById('by').value + '/' + 
-                    document.getElementById('lot-number').value + '.csv')">表示する</button>
+                    document.conditions.brewery.value + '/3009' + '.csv')">表示する</button>
                 </div>
             </form> 
         </div>
-        <div class="image-frame">
-            <div>
-                <canvas id="myChart" width="100%" height="400"></canvas>
+        <div class="main-content">
+            <div class=" data-frame">
+                <div class="data-label">
+                    <div>TNo.8218</div>
+                    <div>3009号</div>
+                    <div>24日目</div>
+                    <div>大吟醸0-50</div>
+                </div>
+                <canvas id="myChart"></canvas>
             </div>
         </div>
     </main> 

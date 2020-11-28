@@ -36,7 +36,7 @@ function drawChartKoji(data) {
 
   // 4)chart.jsで描画
   var ctx = document.getElementById("myChart").getContext("2d");
-  ctx.canvas.height = 400;
+  ctx.canvas.height = 200;
   var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -118,26 +118,33 @@ function drawChartMoromi(data) {
   // 3)chart.jsのdataset用の配列を用意
   var tmpLabels = [], tmpData1 = [], tmpData2 = [], tmpData3 = [];
   for (var row in data) {
-    tmpLabels.push(data[row][0])
-    tmpData1.push(data[row][1])
-    tmpData2.push(data[row][2])
-    tmpData3.push(data[row][3])
+    tmpLabels.push(data[row][1])
+    tmpData1.push(data[row][2])
+    tmpData2.push(data[row][3])
+    tmpData3.push(data[row][4])
   };
 
   // 4)chart.jsで描画
   var ctx = document.getElementById("myChart").getContext("2d");
-  ctx.canvas.height = 400;
+  ctx.canvas.height = 200;
   var myChart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: tmpLabels,
       datasets: [
-        { label: "設定温度", data: tmpData1, fill: false, borderWidth: 2,pointBorderWidth: 1, pointRadius: 0},
         { label: "実測値（上）", data: tmpData2, fill: false, borderWidth: 2,pointBorderWidth: 1, pointRadius: 0},
-        { label: "実測値（下）", data: tmpData3, fill: false, borderWidth: 2,pointBorderWidth: 1, pointRadius: 0}
+        { label: "実測値（下）", data: tmpData3, fill: false, borderWidth: 2,pointBorderWidth: 1, pointRadius: 0},
+        { label: "設定温度", data: tmpData1, fill: false, borderWidth: 2,pointBorderWidth: 1, pointRadius: 0}
       ]
     },
-    options: {
+    options: { 
+      animation: {
+        duration: 0, // 一般的なアニメーションの時間
+      },
+      hover: {
+        animationDuration: 0, // アイテムのマウスオーバー時のアニメーションの長さ
+      },
+      responsiveAnimationDuration: 0, // サイズ変更後のアニメーションの長さ
             responsive: true,
             maintainAspectRatio: false,
             stepSize: 1,
@@ -148,8 +155,51 @@ function drawChartMoromi(data) {
               colorschemes: {
                 scheme: 'tableau.Tableau20'
               }
+            },
+            scales: {
+              //Y軸のオプション
+              yAxes: [{
+                  id: "y1",
+                  scaleLabel: {
+                      fontColor: "black"
+                  },
+                  gridLines: {
+                      color: "rgba(126, 126, 126, 0.4)",
+                      zeroLineColor: "black"
+                  },
+                  ticks: {
+                      fontColor: "black",
+                      beginAtZero: true,
+                      suggestedmax: 15,
+                      suggestedmin: 5,
+                      stepSize: 1,
+                      callback: function(value, index, values){
+                        return  value +  '℃'
+                      }
+                  }
+              }], 
+              xAxes: [{
+                id: "x1",
+                scaleLabel: {
+                    fontColor: "black"
+                },
+                gridLines: {
+                    color: "rgba(126, 126, 126, 0.4)",
+                    zeroLineColor: "black"
+                },
+                ticks: {
+                    fontColor: "black",
+                    beginAtZero: true,
+                    suggestedmax: 15,
+                    suggestedmin: 5,
+                    stepSize: 10,
+                    callback: function(value, index, values){
+                      return  value + '日目'
+                    }
+                }
+            }]
             }
-          }
+        }
   });
 }
 
