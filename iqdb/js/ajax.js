@@ -30,6 +30,24 @@ function getData(){
     xhr.onreadystatechange = getDataCallBack;
 }
 
+// 品温データの取得(temp_search_ajax.aspを呼び出す)
+function getTempData(){
+    alert('作成中')
+
+    var data = '';
+    var datas = document.forms.conditions;
+    data = data + 'brewery=' + datas.brewery.value;
+    data = data + '&';
+    data = data + 'type=' + datas.type.value;
+
+    console.log(data);
+    var url = encodeURI('temp_search_ajax.asp?' + data);
+    xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.send();
+    xhr.onreadystatechange = getDataCallBack;
+}
+
 // XMLの要素を返す
 function getDataCallBack(){
     if (xhr.readyState == 4) {
@@ -44,10 +62,4 @@ function getDataCallBack(){
             }
         }
     }
-}
-
-function getTemperatureData(){
-    alert('作成中')
-
-    
 }
