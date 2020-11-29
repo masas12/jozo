@@ -32,7 +32,6 @@ function getData(){
 
 // 品温データの取得(temp_search_ajax.aspを呼び出す)
 function getTempData(){
-    alert('作成中')
 
     var data = '';
     var datas = document.forms.conditions;
@@ -44,6 +43,7 @@ function getTempData(){
     var url = encodeURI('temp_search_ajax.asp?' + data);
     xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
+    
     xhr.send();
     xhr.onreadystatechange = getDataCallBack;
 }
@@ -55,10 +55,10 @@ function getDataCallBack(){
             if (xhr.responseText == 'No Record') {
                 alert('該当するデータがありません')
             }else{
-            var target = document.getElementById('results');
-            target.innerHTML = xhr.responseText;
-            var conditions = document.getElementById('conditions');
-            conditions.checked = false;
+                var target = document.getElementById('results');
+                target.innerHTML = xhr.responseText;
+                var conditions = document.getElementById('conditions');
+                conditions.checked = false;
             }
         }
     }

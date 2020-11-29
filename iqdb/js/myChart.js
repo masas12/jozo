@@ -203,31 +203,43 @@ function drawChartMoromi(data, no) {
   });
 }
 
-function exeChart(path, no) {
-  // 1) ajaxでCSVファイルをロード
-  var req = new XMLHttpRequest();
-  var filePath = path;
-  req.open("GET", filePath, true);
-  
-  req.onload = function() {
-    // 2) CSVデータ変換の呼び出し
-    data = csv2Array(req.responseText);
+function exeChart() {
+    var filePath = '';
+    var conditions = document.forms.conditions;
+    var filePath = './' + conditions.type.value;
+    var filePath = filePath + '/' + conditions.brewery.value + '/';
 
-    // 3) chart.jsデータ準備、4) chart.js描画の呼び出し
-    if(filePath.indexOf( 'koji' ) !== -1) {
-      drawChartKoji(data, no);
-    }else if(filePath.indexOf( 'moromi' ) !== -1) {
-      drawChartMoromi(data, no);
-    }
+    var charts = document.getElementsByClassName("chart");
+    // for(var i = 1; i < charts.length; i++){
+        // 1) ajaxでCSVファイルをロード
+        i=1
+        var shikomiId = "shikomi-no-" + i
+        var shikomiNo = document.getElementById(shikomiId).innerText;
+        var shikomiNo = shikomiNo.replace('号','')
+        var filePath = filePath + shikomiNo + '.csv';
 
-    try {      
-      if(this.status != 200) {
-        alert('該当のデータがありません。');  
-        exeChart('http://srv-160/Gekkeikan/Jozo/data/moromi/ginjo/dummy.csv') ; 
-      }
-    } catch (e) {
-      alert(e.message);
-    }
+        var req = new XMLHttpRequest();
+        req.open("GET", filePath, true);
+        
+        req.onload = function() {
+            // 2) CSVデータ変換の呼び出し
+            chartData = csv2Array(req.responseText);
+
+            // 3) chart.jsデータ準備、4) chart.js描画の呼び出し
+            if(conditions.type.value == 'koji') {
+                drawChartKoji(chartData, 1);
+            }else if(conditions.type.value == 'moromi') {
+                drawChartMoromi(chartData, 1);
+        }
+    // }
+    // try {      
+    //   if(this.status != 200) {
+    //     alert('該当のデータがありません。');  
+    //     exeChart('./moromi/dummy.csv') ; 
+    //   }
+    // } catch (e) {
+    //   alert(e.message);
+    // }
   }
   req.send(null);
 }
