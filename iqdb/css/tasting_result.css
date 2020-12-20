@@ -18,197 +18,39 @@ main {
     margin: 40px 0;
 }
 
-.main-content {
-    margin: 2px 0;
-    padding: 0;
-}
-
-form {  
-    background-color: var(--font-light-color);
-    /* border: var(--header-back-color) solid 1px; */
-}
-
-.condition-title {
+#tab-controls {
+    margin-bottom: 0;
     display: flex;
+}
+
+#tab-controls a {
+    display: inline-block;            /* インラインブロック化 */
+    width: 33.3%;
+    text-align: center;
+    border-width: 1px 1px 0px 1px;    /* 下以外の枠線を引く */
+    border-style: solid;              /* 枠線の種類：実線 */
+    border-color: black;              /* 枠線の色：黒色 */
+    border-radius: 3px 3px 0 0; /* 枠線の左上角と右上角だけを丸く */
+    padding: 0.2em;              /* 内側の余白 */
+    text-decoration: none;            /* リンクの下線を消す */
+    color: black;                     /* 文字色：黒色 */
     font-size: 20px;
-    height: 40px;
-    width: 100%;
-    line-height: 40px;
-    justify-content: center;
-    padding: 0 10px;
-    margin: 1.5px 0;
-    box-sizing: border-box;
-    color: var(--header-back-color);
-    background-color: var(--header-color);
-    background-color: var(--header-color);
-    border: var(--header-back-color) solid 1px;
-    cursor: pointer;
-    transition: all 0.5s;
-}
-.search {
-    width: 25px;
-    height: 25px;
-    margin: 7.5px 0;
-}
+    background-color: white;          /* 背景色：白色 */
+    position: relative;               /* JavaScriptでz-indexを調整するために必要 */
+ }
 
-.container {
-    font-size: 16px;
-    text-align: left;
-    margin: 0 10%;
-    padding-top: 10px;
-}
-
-.container label {
-    width: 100px;
-    height: 50px;
-}
-
-.license-group {
-    height: 30px;
-    display: flex;
-    border-radius: 3px;
-    overflow: hidden;
-    margin: 0 auto;
-    border : var(--footer-back-color) solid 1px;
-}
-
-.license-group div {
-    position: relative;
-    flex: 1;
-    margin: 1px;
-}
-
-.license-group input {
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-}
-
-.license-group  label {
-    font-size: 16px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: var(--font-sub-color);
-    border-right: 1px solid var(--footer-back-color);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: Center;
-    pointer-events: none;
-}
-
-.license-group div:last-child label {
-    border-right: 0;
-}
-
-.license-group  input:checked + label {
-    color: var(--menu-color);
-    background-color: var(--menu-back-color);
-    font-weight: 500;
-}
-
-.input-box {
-    width: 100%;
-    height: 30px;
-    font-size: 16px;
-    padding: 1px 10px;
-    box-sizing: border-box;
-    background-color: var(--footer-color);
-    border : var(--footer-back-color) solid 1px;
-    border-radius: 2px;
-}
-
-::placeholder {
-	color: var(--font-sub-color);
-}
-
-.process {
-    width: 100%;
-    height: 30px;
-    font-size: 16px;
-    padding: 1px 10px;
-    box-sizing: border-box;
-    background-color: var(--footer-color);
-    border : var(--footer-back-color) solid 1px;
-    border-radius: 2px;
-}
-
-.submit {
-    width: 100%;
-    font-size: 16px;
-    height: 40px;
-    margin: 10px 0;
-    border: none;
-    outline: none;
-    color: var(--button-color);
-    background-color: var(--button-back-color);
-    border-bottom: solid 4px var(--button-border-color);
-    border-radius: 3px;
-}
-.submit:active {
-    margin-top: 14px;
-    margin-bottom: 6px;
-    border-bottom: none;
-}
-
-.result-title {
-    display: block;
-    font-size: 16px;
-    height: 40px;
-    padding: 3px 10px;
-    margin: 1.5px 0;
-    color: var(--font-dark-color);
-    background-color: #a4cbf3;
-    cursor: pointer;
-    transition: all 0.5s;
-}
-
-.results label:hover {
-    background-color: #85baef;
-}
-
-.show-check {
-    display: none;
-}
-
-.show-content {
-    font-size: 16px;
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: 0.5s;
-}
-
-table{
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    text-align: left;
-  }
-  
-table th {
-    width: 40%;
-    font-weight: normal;
-    padding-left: 10px;
-}
-  
-table tr:nth-child(odd){
-    background-color: rgb(211, 211, 211)
-  }
-
-table .quality{
-    font-weight: bold;
-  }
-
-.show-check:checked + .show-content {
-    height: auto;
-    padding: 5px;
-    background-color: #eaeaea;
-    opacity: 1;
-}
+ #tab-contents div {
+    border: 1px solid black; /* 枠線：黒色の実線を1pxの太さで引く */
+    border-radius: 0 0 3px 3px; /* 枠線の左上角と右上角だけを丸く */
+    margin-top: -1px;        /* 上側にあるタブと1pxだけ重ねるために「-1px」を指定 */
+    margin-bottom: 10px;
+    padding: 1em;            /* 内側の余白量 */
+    background-color: white; /* 背景色：白色 */
+    position: relative;      /* z-indexを調整するために必要 */
+    z-index: 0;              /* 重なり順序を「最も背面」にするため */
+ }
+#tab-controls a:nth-child(1), #tab-contents div:nth-child(1) { background-color: #ffffdd; }/* 1つ目のタブとその中身用の配色 */
+#tab-controls a:nth-child(2), #tab-contents div:nth-child(2) { background-color: #ddffdd; }/* 2つ目のタブとその中身用の配色 */
 
 .footer-message {
     font-size: 12px;
