@@ -31,7 +31,7 @@ main {
     border-style: solid;              /* 枠線の種類：実線 */
     border-color: black;              /* 枠線の色：黒色 */
     border-radius: 3px 3px 0 0; /* 枠線の左上角と右上角だけを丸く */
-    padding: 0.2em;              /* 内側の余白 */
+    padding: 0.5em 0;              /* 内側の余白 */
     text-decoration: none;            /* リンクの下線を消す */
     color: black;                     /* 文字色：黒色 */
     font-size: 20px;
