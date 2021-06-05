@@ -1,298 +1,222 @@
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- ファビコン -->
-    <link rel="icon" href="../icon/icon_512×512.ico">        
-    <!-- アイコン -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../icon/icon_192×192.png">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IQDB　利き酒フォーム</title>
 
-    <link rel="stylesheet" href="../css/default.css">
-    <link rel="stylesheet" href="../css/root.css">
-    <link rel="stylesheet" href="../css/qr_reader.css">
+    <!--Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!--Font Awesome5-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 
-    <title>IQDB-QRcode-Reader</title>
-
-    <style>
-    body {
-        font-family: "Helvetica Neue",
-          Arial,
-          "Hiragino Kaku Gothic ProN",
-          "Hiragino Sans",
-          Meiryo,
-          sans-serif;
-        margin: 0;
-        color: var(--main-color);
-        background-color: var(--main-back-color);
-        font-size: 24px;
-        height: 100%;
-    }
-    
-    header {
-        z-index: 1000;
-        width: 100%;
-        height: 40px;
-        top: 0;
-        text-align: center;
-        color: var(--header-color);
-        background-color: var(--header-back-color);
-        margin: 0;
-    }
-    
-    
-    footer {
-        width: 100%;
-        height: 40px;
-        font-size: 12px;
-        color: var(--footer-color);
-        background-color: var(--footer-back-color);
-        padding: 10px 10px 10px 0;
-        margin: 20px 0 0 0;
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-end;
-        box-sizing: border-box;
-        position: fixed;
-        bottom: 0;
-    }
-    :root {
-    --font-dark-color: #211f30;
-    --font-light-color: #ffffff;
-    --font-sub-color: #c3c7d6;
-    
-    --main-color: var(--font-dark-color);
-    --main-back-color: #ffffff;
-    --header-color: var(--font-light-color);
-    --header-back-color: #0e5b8f;
-    --footer-color: var(--font-light-color);
-    --footer-back-color: #211f30;
-    --button-color: var(--font-dark-color);
-    --button-back-color: #e29930;
-    --button-border-color: #b46a02;
-    --menu-color: var(--font-light-color);
-    --menu-back-color: #0e5b8f;
-    --menu-border-color: #211f30;
-    --submenu-color: #211f30;
-    --submenu-back-color: #e7f3fc;
-    --submenu-border-color: #211f30;
-}
-*,
-*:before,
-*:after {
-    box-sizing: border-box;
-}
-
-html {
-    height: 100%;
-}
-
-header {
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.top-wrapper {
-    margin-top: 80px;
-    font-size: 20px;
-    color: var(--font-dark-color);
-}
-
-.reader {
-    width: 100vw;
-    height: 100%;
-}
-
-.reader-video {
-    background-color: #000;
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-}
-
-.modal-overlay {
-    display: none;
-    position: fixed;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100%;
-    background-color: rgba(0, 0, 0, .7);
-}
-
-.modal-overlay.is-show {
-    display: flex;
-}
-
-.modal {
-    width: 80%;
-    background: #fff;
-    border-radius: 10px;
-}
-
-.modal-cnt {
-    padding: 30px 15px;
-}
-
-.modal-title {
-    display: block;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.modal-result {
-    word-break: break-all;
-}
-
-.modal-btn {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    display: block;
-    background: none;
-    border: none;
-    border-top: 1px solid #ddd;
-    width: 100%;
-    color: #333;
-    padding: 20px;
-    text-align: center;
-    font-size: 18px;
-    text-decoration: none;
-}
-
-.unsupported {
-    display: none;
-    flex-direction: column;
-    position: fixed;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100%;
-    color: #fff;
-}
-
-.unsupported.is-show {
-    display: flex;
-}
-
-.unsupported-title {
-    font-weight: bold;
-    font-size: 2em;
-}
-
+    <!--自作CSS -->
+    <style type="text/css">
+        <!--
+        /*ここに調整CSS記述*/
+        -->
+        .title {
+            width: min(25vmin, 100px);
+        }
+        .score {
+            width: min(6vmin, 40px);
+            height: min(6vmin, 40px);
+        }
+        .form-check-label {
+            margin-left: 2vw;
+        }
     </style>
-    
 </head>
 <body>
-    <header>
-        <div class="title">QRcode-Reader</div>
-    </header>
-    <div class="top-wrapper">
-      細かいQRコードは読み取れない場合があります。
-    </div>
-    <main>
-        <div class="reader">
-          <video id="js-video" class="reader-video" autoplay playsinline></video>
-        </div>
+<!-- Navigation -->
+<nav class="navbar navbar-light navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">IQDB　利き酒フォーム</a>
+</nav>
+<!-- Button trigger modal -->
 
-        <div style="display:none">
-          <canvas id="js-canvas"></canvas>
-        </div>
-
-        <div id="js-modal" class="modal-overlay">
-          <div class="modal">
-            <div class="modal-cnt">
-              <span class="modal-title">読み取り結果</span>
-              <span id="js-result" class="modal-result"></span>
+    <!-- Modal -->
+<div class="modal fade" id="selectComment" tabindex="-1" role="dialog" aria-labelledby="selectCommentTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="selectCommentTitle">コメント選択</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <a href="" id="js-link" class="modal-btn" target="_blank">開く</a>
-            <button type="button" id="js-modal-close" class="modal-btn">閉じる</button>
-          </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="selected-comment" class="col-form-label">comment:</label>
+                        <input type="text" class="form-control" id="selected-comment">
+                        <label for="comment-list">コメントリスト</label>
+                        <select multiple class="form-control form-control-lg" size="10" id="comment-list">
+                          <option>アセトアルデヒド</option>
+                          <option>アセトアルデヒド1</option>
+                          <option>アセ2トアルデヒド</option>
+                          <option>アセ3トアルデヒド</option>
+                          <option>アセ4トアルデヒド</option>
+                          <option>アセ5トアルデヒド</option>
+                          <option>アセ6トアルデヒド</option>
+                          <option>アセ7トアルデヒド</option>
+                          <option>アセ8トアルデヒド</option>
+                          <option>アセ9トアルデヒド</option>
+                          <option>アセ12トアルデヒド</option>
+                          <option>アセト13アルデヒド</option>
+                          <option>アセトア14ルデヒド</option>
+                          <option>アセトアル15デヒド</option>
+                          <option>アセ15トアルデヒド</option>
+                          <option>アセト35アルデヒド</option>
+                          <option>アセトア35ルデヒド</option>
+                          <option>アセトアル46デヒド</option>
+                          <option>ア22セトアルデヒド</option>
+                          <option>アセ22トアルデヒド</option>
+                          <option>アセト22アルデヒド</option>
+                          <option>アセトア22ルデヒド</option>
+                          <option>アセトアル22デヒド</option>
+                          <option>アセトアルデ22ヒド</option>
+                          <option>アセトアルデヒ22ド</option>
+                          <option>アセトアルデヒ523ド</option>
+                          <option>アセトアルデヒ52ド</option>
+                          <option>アセトアルデ53ヒド</option>
+                          <option>アセトアルデ43ヒド</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="" data-dismiss="modal">キャンセル</button>
+                <button type="button" class="btn btn-primary" onclick="setSelectedComment()" data-dismiss="modal">決定</button>
+            </div>
         </div>
-
-<div id="js-unsupported" class="unsupported">
-  <p class="unsupported-title">Sorry!</p>
-  <p>Unsupported browser</p>
+    </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/jsqr@latest/dist/jsQR.min.js"></script>
+<!-- Page Content -->
+<div class="container mt-5 p-lg-5">
+
+    <form>
+        <div class="bg-light border p-2 mb-2">
+            <!--情報-->
+            <div class="form-group form-group-sm form-inline">
+                <label for="id-1" class="col-form-label-sm col-form-label title">サンプルID</label>
+                <div class="">
+                <input type="text" readonly class="form-control-sm form-control-plaintext" id="id-1" value="56789">
+                </div>
+            </div>
+            <!--/情報-->
+
+            <!--点数-->
+            <div class="form-group d-flex justify-content-around mr-3">
+                <div class="form-check d-flex align-items-center">
+                    <input class="score" type="radio" id="score1-1" name="score-1" value="1">
+                    <label for="score1-1" class="form-check-label">1</label>
+                </div>
+                <div class="form-check d-flex align-items-center">
+                    <input class="score" type="radio" id="score2-1" name="score-1" value="2">
+                    <label for="score2-1" class="form-check-label">2</label>
+                </div>
+                <div class="form-check d-flex align-items-center">
+                    <input class="score" type="radio" id="score3-1" name="score-1" value="3">
+                    <label for="score3-1" class="form-check-label">3</label>
+                </div>
+                <div class="form-check d-flex align-items-center">
+                    <input class="score" type="radio" id="score4-1" name="score-1" value="4">
+                    <label for="score4-1" class="form-check-label">4</label>
+                </div>
+                <div class="form-check d-flex align-items-center">
+                    <input class="score" type="radio" id="score5-1" name="score-1" value="5">
+                    <label for="score5-1" class="form-check-label">5</label>
+                </div>
+            </div>
+            <!--/点数-->
+            
+            <!--コメント-->
+            <div class="form-group">
+                <textarea class="form-control form-control-sm" id="comment-1" rows="1" placeholder="コメントがあればこちらへ"></textarea>
+            </div>
+            <!--/コメント-->
+
+            <div class="d-flex justify-content-around">
+                <div class="text-right">
+                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#selectComment" data-whatever="1">
+                        コメント選択
+                    </button>
+                </div>
+                <div class="text-right">
+                    <button type="button" onclick="radioReset(1)" class="btn btn-sm btn-warning">reset</button>
+                </div>
+            </div>
+        </div>
+
+        <!--ボタンブロック-->
+        <div class="form-group mt-4">
+                <button type="submit" class="btn btn-primary btn-block">完了</button>
+        </div>
+        <!--/ボタンブロック-->
+
+    </form>
+
+</div><!-- /container -->
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+<!-- Validation -->
 <script>
-    if (!navigator.mediaDevices) {
-    document.querySelector('#js-unsupported').classList.add('is-show')
-}
 
-const video  = document.querySelector('#js-video')
-const canvas = document.querySelector('#js-canvas')
-const ctx    = canvas.getContext('2d')
+    // 無効なフィールドがある場合にフォーム送信を無効にするスターターJavaScriptの例
+    (function() {
+        'use strict';
 
-const checkImage = () => {
-    // 取得している動画をCanvasに描画
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
+        window.addEventListener('load', function() {
+            // カスタムブートストラップ検証スタイルを適用するすべてのフォームを取得
+            var forms = document.getElementsByClassName('needs-validation');
+            // ループして帰順を防ぐ
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                // submitボタンを押したら以下を実行
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    });
 
-    // Canvasからデータを取得
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+    function radioReset(no) {
+        'use strict';
 
-    // isQRに渡す
-    const code = jsQR(imageData.data, canvas.width, canvas.height)
+        const sampleId = document.getElementById('id-' + no).value;
 
-    // QRコードの読み取りに成功したらモーダルを開く
-    // 失敗したら再度実行
-    if (code) {
-        openModal(code.data)
-    } else {
-        setTimeout(() => { checkImage() }, 200)
-    }
-}
-
-const openModal = function(url) {
-    document.querySelector('#js-result').innerText = url
-    document.querySelector('#js-link').setAttribute('href', url)
-    document.querySelector('#js-modal').classList.add('is-show')
-}
-
-document.querySelector('#js-modal-close')
-    .addEventListener('click', () => {
-        document.querySelector('#js-modal').classList.remove('is-show')
-        checkImage()
-    })
-
-navigator.mediaDevices
-    .getUserMedia({
-         audio: false,
-         video: {
-             facingMode: {
-                exact: 'environment'
-                }
-           }
-    })
-    .then(function(stream) {
-        video.srcObject = stream
-        video.onloadedmetadata = function(e) {
-            video.play()
-            checkImage()
+        const result = window.confirm('サンプルID: ' + sampleId + ' の結果をリセットします。');
+        
+        if (result === true) {
+            for (const e of document.getElementsByName('score-' + no)) {
+                e.checked = false;
+            }
+            document.getElementById('comment-' + no).value = null;
         }
-    })
-    .catch(function(err) {
-        alert('Error!!')
+    }
+
+    function setSelectedComment() {
+        alert(document.getElementById('selected-comment').value);
+    }
+
+    $('#selectComment').on('show.bs.modal', function (event) {
+        const button = $(event.relatedTarget);
+        const no = button.data('whatever');
+
+        const sampleId = document.getElementById('id-' + no).value;
+
+        const modal = $(this);
+        modal.find('.modal-title').text('サンプルID:' + sampleId + ' にコメント追加');
+        modal.find('.modal-body input#selected-comment').val('');
     })
 </script>
-    </main>
-    <footer>
-        <div class="footer-message">
-            歩きスマホは絶対にやめましょう。
-        </div>
-    </footer>
 </body>
 </html>
