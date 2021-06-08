@@ -55,9 +55,9 @@ startBtn.onclick = function() {
             else {
                 console.error('BarcodeDetection is not enable!');
             }
-            playerArea.style.display = "block";
-            startBtn.style.display = "none";
-            stopBtn.style.display = "block";
+//             playerArea.style.display = "block";
+//             startBtn.style.display = "none";
+//             stopBtn.style.display = "block";
         })
         .catch(function(err) {
             console.log(err);
@@ -65,9 +65,7 @@ startBtn.onclick = function() {
                 video:
                 {
                     width: 500,
-                    height: 500,
-        facingMode:
-        { exact: "environment"}
+                    height: 500
                 },
                 audio: false
             };
@@ -82,9 +80,9 @@ function stopVideo() {
     });
     localStream = null;
     video.srcObject = null;
-    playerArea.style.display = "none";
-    startBtn.style.display = "block";
-    stopBtn.style.display = "none";
+//     playerArea.style.display = "none";
+//     startBtn.style.display = "block";
+//     stopBtn.style.display = "none";
 };
 
 stopBtn.onclick = function() {
