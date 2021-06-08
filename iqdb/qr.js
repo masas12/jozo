@@ -131,8 +131,8 @@ function qrCreate() {
 
             const qrText = Encoding.convert(qrData, 'SJIS');
             $('#' + qrImgId).qrcode({
-                width: 500,
-                height: 500,
+                width: 300,
+                height: 300,
                 text: qrText
               });
             
