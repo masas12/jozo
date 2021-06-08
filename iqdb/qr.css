@@ -7,10 +7,6 @@
     height: min(500px, 90vw);
 }
 
-#canvas-area #qr-stop-button {
-    display: none;
-}
-
 canvas {
     width: min(300px,90vw);
     
