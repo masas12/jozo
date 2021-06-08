@@ -6,8 +6,8 @@ const fps = 10;
 let medias = {
     video:
     {
-        width: 500,
-        height: 500,
+        width: 300,
+        height: 300,
         facingMode:
         { exact: "environment"}
     },
@@ -18,6 +18,7 @@ const qrArea = document.getElementById('qr-reader-area');
 const playerArea = document.getElementById('player');
 const startBtn = document.getElementById('qr-start-button');
 const stopBtn = document.getElementById('qr-stop-button');
+const formArea = document.getElementById('form-area');
 
 playerArea.style.display = "none";
 startBtn.style.display = "block";
@@ -44,6 +45,7 @@ startBtn.onclick = function() {
                             }
                             if (barcode) {
                                 stopVideo();
+                                formArea.style.display ="block"
                                 qrArea.style.display ="none"
                             }
                     })
@@ -64,8 +66,8 @@ startBtn.onclick = function() {
             medias = {
                 video:
                 {
-                    width: 500,
-                    height: 500
+                    width: 300,
+                    height: 300
                 },
                 audio: false
             };
@@ -97,6 +99,3 @@ function convertLink(str) {
     
     return str.replace(regexpUrl, regexpLink);
 };
-
-// load時にstart状態にする
-startBtn.click();

@@ -146,17 +146,13 @@ function qrCreate() {
         canvases[0].style.display = 'block';
 
         // document.querySelector('#qr-' + qrNo + 'canvas').style.width = 'min(100%, 500px)';
-        document.getElementById('forms').style.display = 'none';
-        document.getElementById('finish-button').style.display = 'none';
-        document.getElementById('qr').style.display = 'block';
-        document.getElementById('fix-button').style.display = 'block';
+        document.getElementById('form-area').style.display = 'none';
+        document.getElementById('result-qr-area').style.display = 'block';
     }
 };
 
 // 利き酒結果の修正
 function fixResult() {
-    document.getElementById('forms').style.display = 'block';
-    document.getElementById('finish-button').style.display = 'block';
-    document.getElementById('qr').style.display = 'none';
-    document.getElementById('fix-button').style.display = 'none';
+    document.getElementById('form-area').style.display = 'block';
+    document.getElementById('result-qr-area').style.display = 'none';
 };

@@ -103,9 +103,9 @@
 <!-- Modal -->
 
 
-<div class="container mt-3 p-lg-5">
+<div class="container p-lg-5">
     <!-- QR Reaader -->
-    <section class="text-center mt-2" id="qr-reader-area">
+    <section class="text-center mt-5 mx-auto" id="qr-reader-area">
         <div class="bg-light pb-2 my-1" id="canvas-area">
             <video id="player" muted autoplay></video>
             <div>
@@ -116,7 +116,7 @@
         <button type="button" class="btn btn-danger btn-block mt-0" id="qr-stop-button">中断！</button>
     </section>
 
-    <div class="mt-3" id="forms">
+    <div class="mt-3" id="form-area">
         <form class="tasting-form bg-light border p-2 mb-2" id="form-1">
             <div class="d-none">
                 <input type="checkbox" class="change-flag" id="flag-1">
@@ -215,18 +215,16 @@
                 </div>
             </div>
         </form>
+
+        <button type="button" class="btn btn-primary btn-block my-5" id="finish-button" onclick="qrCreate()" >完了</button>
+
     </div>
 
-    <div class="form-group my-5">
-        <button type="button" class="btn btn-primary btn-block" id="finish-button" onclick="qrCreate()" >完了</button>
-    </div>
     
-    <div class="card-group mx-3" id="qr">
+    <div class="card-group mx-auto mt-5" id="result-qr-area">
         <div class="card border-0" id="qrimg"></div>
-    </div>
-
-    <div class="form-group my-5">
-        <button type="button" class="btn btn-danger btn-block" id="fix-button" onclick="fixResult()">修正する</button>
+        <button type="button" class="btn btn-danger btn-block mt-5" id="fix-button" onclick="fixResult()">修正する</button>
+    
     </div>
 </div>
 
