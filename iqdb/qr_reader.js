@@ -19,9 +19,9 @@ const playerArea = document.getElementById('player');
 const startBtn = document.getElementById('qr-start-button');
 const stopBtn = document.getElementById('qr-stop-button');
 
-playerArea.style.display = "none";
-startBtn.style.display = "block";
-stopBtn.style.display = "none";
+// playerArea.style.display = "none";
+// startBtn.style.display = "block";
+// stopBtn.style.display = "none";
 
 startBtn.onclick = function() {
     document.getElementById('rawValue').innerHTML = "";
