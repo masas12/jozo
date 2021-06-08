@@ -1,10 +1,10 @@
 #qr-reader-area {
-    width: min(500px, 90vw);
+    width: min(300pxpx, 90vw);
 }
 
 #canvas-area {
-    width: min(500px, 90vw);
-    height: min(500px, 90vw);
+    width: min(300px, 90vw);
+    height: min(300px, 90vw);
 }
 
 canvas {
@@ -27,7 +27,3 @@ canvas {
 #fix-button {
     display: none;
 }
-/* 
-#qr-aria{
-    overflow: hidden;
-} */
