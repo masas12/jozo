@@ -25,13 +25,15 @@ for(var i = 0,len = list.length; i < len; ++i){
         let selectedComment = commentBox.value;
         let str = this.innerText + ',';
 
-        if (selectedComment.indexOf(str) == -1){
-            selectedComment += str;
-            commentBox.value = selectedComment;
+        if (this.classList.contains('active') == false) {
+            if (selectedComment.indexOf(str) == -1){
+                selectedComment += str;
+                commentBox.value = selectedComment;
+            }
         }
-        else{
-            selectedComment = selectedComment.replace(str, '');
-            commentBox.value = selectedComment;
+        else {
+          selectedComment = selectedComment.replace(str, '');
+          commentBox.value = selectedComment;
         }
     })
 }
