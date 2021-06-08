@@ -65,7 +65,9 @@ startBtn.onclick = function() {
                 video:
                 {
                     width: 500,
-                    height: 500
+                    height: 500,
+        facingMode:
+        { exact: "environment"}
                 },
                 audio: false
             };
