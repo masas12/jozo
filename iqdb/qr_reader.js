@@ -19,9 +19,9 @@ const playerArea = document.getElementById('player');
 const startBtn = document.getElementById('qr-start-button');
 const stopBtn = document.getElementById('qr-stop-button');
 
-// playerArea.style.display = "none";
-// startBtn.style.display = "block";
-// stopBtn.style.display = "none";
+playerArea.style.display = "none";
+startBtn.style.display = "block";
+stopBtn.style.display = "none";
 
 startBtn.onclick = function() {
     document.getElementById('rawValue').innerHTML = "";
@@ -55,9 +55,9 @@ startBtn.onclick = function() {
             else {
                 console.error('BarcodeDetection is not enable!');
             }
-//             playerArea.style.display = "block";
-//             startBtn.style.display = "none";
-//             stopBtn.style.display = "block";
+            playerArea.style.display = "block";
+            startBtn.style.display = "none";
+            stopBtn.style.display = "block";
         })
         .catch(function(err) {
             console.log(err);
@@ -80,9 +80,9 @@ function stopVideo() {
     });
     localStream = null;
     video.srcObject = null;
-//     playerArea.style.display = "none";
-//     startBtn.style.display = "block";
-//     stopBtn.style.display = "none";
+    playerArea.style.display = "none";
+    startBtn.style.display = "block";
+    stopBtn.style.display = "none";
 };
 
 stopBtn.onclick = function() {
