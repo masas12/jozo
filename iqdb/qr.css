@@ -1,0 +1,24 @@
+canvas {
+    width: min(300px,90vw);
+    
+}
+
+.title {
+    width: min(25vmin, 100px);
+}
+
+.score {
+    width: min(6vmin, 40px);
+    height: min(6vmin, 40px);
+}
+.form-check-label {
+    margin-left: 2vw;
+}
+
+#fix-button {
+    display: none;
+}
+/* 
+#qr-aria{
+    overflow: hidden;
+} */

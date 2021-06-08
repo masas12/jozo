@@ -1,0 +1,233 @@
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IQDB　利き酒フォーム</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="qr.css">
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">IQDB 利き酒アプリ</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="test.html">Home</a>
+        </div>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="qr.html">qr<span class="sr-only">(current)</span></a>
+        </div>
+    </div>
+</nav>
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="selectComment" tabindex="-1" role="dialog" aria-labelledby="selectCommentTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="selectCommentTitle">コメント選択</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <div class="form-group form-group-sm form-inline mb-0">
+                            <label for="active-id" class="col-form-label-sm col-form-label title">サンプルID</label>
+                            <div class="">
+                                <input type="text" name="id" readonly class="form-control-sm form-control-plaintext" id="active-id">
+                            </div>
+                        </div>
+                        <label for="selected-comment" class="col-form-label-sm mb-0">コメント</label>
+                        <input type="text" class="form-control" id="selected-comment">
+                        <div class="overflow-auto border mt-2" style="height: 50vh;">
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">アセトアルデヒド</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">はなやか</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">膨らみ</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">味濃い</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">薄い</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">にがい</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">紙臭</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">パック臭</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">アセトアルデヒド</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">はなやか</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">膨らみ</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">味濃い</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">薄い</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">にがい</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">紙臭</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">パック臭</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">アセトアルデヒド</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">はなやか</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">膨らみ</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">味濃い</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">薄い</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">にがい</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">紙臭</button>
+                            <button type="button" class="btn btn-outline-success m-1 comment-word" data-toggle="button">パック臭</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <input type="text" readonly class="form-control-sm form-control-plaintext col-2 text-secondary" id="active-no">
+                <button type="button" class="btn btn-secondary mx-4" onclick="" data-dismiss="modal">キャンセル</button>
+                <button type="button" class="btn btn-primary" onclick="setSelectedComment()" data-dismiss="modal">決定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+
+
+<div class="container mt-3 p-lg-5">
+    <!-- QR Reaader -->
+    <section class="text-center mt-2" id="contents">
+        <button type="submit" class="btn btn-primary btn-block" id="qr-reader-button" onclick="changeDisplay()">利き酒を開始！</button>
+        <div class="bg-light pb-2 mt-2" id="canvas_area">
+            <!-- カメラ映像 -->
+            <canvas class="border border-dark bg-white" id="result"></canvas>
+        
+            <!-- 読み取り結果 -->
+            <div class="h4" id="result_text">
+            </div>
+        </div>
+    </section>
+
+    <div id="forms">
+        <form class="tasting-form bg-light border p-2 mb-2" id="form-1">
+            <div class="d-none">
+                <input type="checkbox" class="change-flag" id="flag-1">
+            </div>
+            <div class="form-group form-group-sm form-inline">
+                <label for="id-1" class="col-form-label-sm col-form-label title"><u>サンプルID</u></label>
+                <div class="">
+                    <input type="text" readonly class="form-control-sm form-control-plaintext" id="id-1" value="56789">
+                </div>
+            </div>
+            
+            <div class="form-group d-flex justify-content-around mr-3">
+                <div class="form-check d-flex align-items-center">
+                    <input class="score" type="radio" id="score1-1" name="score-1" value="1">
+                    <label for="score1-1" class="form-check-label">1</label>
+                </div>
+                <div class="form-check d-flex align-items-center">
+                    <input class="score" type="radio" id="score2-1" name="score-1" value="2">
+                    <label for="score2-1" class="form-check-label">2</label>
+                </div>
+                <div class="form-check d-flex align-items-center">
+                    <input class="score" type="radio" id="score3-1" name="score-1" value="3">
+                    <label for="score3-1" class="form-check-label">3</label>
+                </div>
+                <div class="form-check d-flex align-items-center">
+                    <input class="score" type="radio" id="score4-1" name="score-1" value="4">
+                    <label for="score4-1" class="form-check-label">4</label>
+                </div>
+                <div class="form-check d-flex align-items-center">
+                    <input class="score" type="radio" id="score5-1" name="score-1" value="5">
+                    <label for="score5-1" class="form-check-label">5</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <textarea class="form-control form-control-sm" id="comment-1" rows="1" placeholder="コメントがあればこちらへ"></textarea>
+            </div>
+
+            <div class="d-flex justify-content-around">
+                <div class="text-right">
+                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#selectComment" data-whatever="1">
+                        コメント選択
+                    </button>
+                </div>
+                <div class="text-right">
+                    <button type="button" onclick="radioReset(1)" class="btn btn-sm btn-warning">reset</button>
+                </div>
+            </div>
+        </form>
+        <form class="tasting-form bg-light border p-2 mb-2" id="form-2">
+            <div class="d-none">
+                <input type="checkbox" class="change-flag" id="flag-2">
+            </div>
+            <div class="form-group form-group-sm form-inline">
+                <label for="id-2" class="col-form-label-sm col-form-label title"><u>サンプルID</u></label>
+                <div class="">
+                    <input type="text" readonly class="form-control-sm form-control-plaintext" id="id-2" value="56789">
+                </div>
+            </div>
+                
+            <div class="form-group d-flex justify-content-around mr-3">
+                <div class="form-check d-flex align-items-center">
+                    <input class="score" type="radio" id="score1-2" name="score-2" value="1">
+                    <label for="score1-2" class="form-check-label">1</label>
+                </div>
+                <div class="form-check d-flex align-items-center">
+                    <input class="score" type="radio" id="score2-2" name="score-2" value="2">
+                    <label for="score2-2" class="form-check-label">2</label>
+                </div>
+                <div class="form-check d-flex align-items-center">
+                    <input class="score" type="radio" id="score3-2" name="score-2" value="3">
+                    <label for="score3-2" class="form-check-label">3</label>
+                </div>
+                <div class="form-check d-flex align-items-center">
+                    <input class="score" type="radio" id="score4-2" name="score-2" value="4">
+                    <label for="score4-2" class="form-check-label">4</label>
+                </div>
+                <div class="form-check d-flex align-items-center">
+                    <input class="score" type="radio" id="score5-2" name="score-2" value="5">
+                    <label for="score5-2" class="form-check-label">5</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <textarea class="form-control form-control-sm" id="comment-2" rows="1" placeholder="コメントがあればこちらへ"></textarea>
+            </div>
+
+            <div class="d-flex justify-content-around">
+                <div class="text-right">
+                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#selectComment" data-whatever="2">
+                        コメント選択
+                    </button>
+                </div>
+                <div class="text-right">
+                    <button type="button" onclick="radioReset(2)" class="btn btn-sm btn-warning">reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="form-group my-5">
+        <button type="button" class="btn btn-primary btn-block" id="finish-button" onclick="qrCreate()" >完了</button>
+    </div>
+    
+    <div class="card-group mx-3" id="qr">
+        <div class="card border-0" id="qrimg"></div>
+    </div>
+
+    <div class="form-group my-5">
+        <button type="button" class="btn btn-danger btn-block" id="fix-button" onclick="fixResult()">修正する</button>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+<script src="jquery.qrcode.min.js"></script>
+<script src="encoding.min.js"></script>
+<script src="qr.js"></script>
+<script src="qr_reader.js"></script>
+
+</body>
+</html>
